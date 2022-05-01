@@ -1,0 +1,35 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<%= stylesheet_link_tag "posts.css" %>
+<div class="container mb80">
+    <%@posts.each do |post|%>
+        <div class="page-timeline">
+            <div class="vtimeline-point">
+                <div class="vtimeline-icon">
+                    <i class="fa fa-image"></i>
+                </div>
+                <div class="vtimeline-block">
+                    <span class="vtimeline-date"><%=post.created_at%></span><div class="vtimeline-content">
+                        <a href="#"><h3><%=post.title%></h3></a>
+                        <ul class="post-meta list-inline">
+                            <li class="list-inline-item">
+                                <i class="fa fa-user-circle-o"></i> <a href="#">John Doe</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-calendar-o"></i> <a href="#"><%=post.updated_at%></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-tags"></i> <a href="#">Bootstrap4</a>
+                            </li>
+                        </ul>
+                        <p>
+                            <%=post.body%>
+                        </p><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>
+
+
+<!-- source: https://www.bootdey.com/snippets/view/bs4-blog-timeline -->

@@ -5,7 +5,7 @@ require 'uri'
 class EnginesController < ApplicationController
     include WebCrawler
     def index
-        trigger_crawler
+        #trigger_crawler
     end 
 
 end 
