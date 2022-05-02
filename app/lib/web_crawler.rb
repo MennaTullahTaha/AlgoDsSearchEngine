@@ -56,13 +56,13 @@ module WebCrawler
                         if result
                             algo_results.append(result)
                         end
-                        write_in_file("algorithms.json", result )
+                        #write_in_file("algorithms.json", result )
                     else
                         result =  get_data_structure_details(result, new_doc)
                         if result
                             ds_results.append(result)
                         end
-                        write_in_file("data_structures.json", result)
+                        #write_in_file("data_structures.json", result)
                     end
                 else
                     crawler_results.delete_if {|x| x == result}

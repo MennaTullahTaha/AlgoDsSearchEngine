@@ -38,14 +38,12 @@ gem 'bootstrap'
 gem 'bcrypt', '~> 3.1.7'
 gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap5'
-gem 'activerecord-import'
-gem 'activerecord'
-
+gem 'pg_search'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'sqlite3'
+  gem 'pg'
 end
 
 group :development do

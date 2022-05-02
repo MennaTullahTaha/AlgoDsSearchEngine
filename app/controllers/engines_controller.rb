@@ -1,7 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
 require 'uri'
-require 'activerecord-import'
 
 class EnginesController < ApplicationController
     include WebCrawler
