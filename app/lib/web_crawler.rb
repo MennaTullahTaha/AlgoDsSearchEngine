@@ -7,13 +7,15 @@ require 'json'
 #TODO make crawler run indiffently 
 module WebCrawler 
     def trigger_crawler
-        follow_links("https://www.geeksforgeeks.org/fundamentals-of-algorithms/", 'div#content', true)
-        follow_links("https://www.geeksforgeeks.org/data-structures/", 'div.entry-content', false)
-        replace_last_character_in_File("algorithms.json")
-        replace_last_character_in_File("data_structures.json")
+        algo_results = follow_links("https://www.geeksforgeeks.org/fundamentals-of-algorithms/", 'div#content', true)
+        ds_results = follow_links("https://www.geeksforgeeks.org/data-structures/", 'div.entry-content', false)
+        #replace_last_character_in_File("algorithms.json")
+        #replace_last_character_in_File("data_structures.json")
+        return algo_results, ds_results
     end 
 
     private
+    ################################################## In case of wanting to create json objects
     def replace_last_character_in_File(file_name)
         File.truncate(file_name, File.size(file_name) - 1)
         File.open(file_name,"a") do |f|
@@ -37,8 +39,10 @@ module WebCrawler
             end 
         end 
     end
-
+    #####################################################
     def follow_links(url, element, algorithms_flag)
+        algo_results = []
+        ds_results = []
         doc = is_link_valid?(url)
         if doc
             content = doc.css(element)
@@ -48,13 +52,26 @@ module WebCrawler
                 new_doc = is_link_valid?(result)
                 if new_doc
                     if algorithms_flag
-                        write_in_file("algorithms.json", get_algorithm_details(result,new_doc))
+                        result = get_algorithm_details(result,new_doc)
+                        if result
+                            algo_results.append(result)
+                        end
+                        write_in_file("algorithms.json", result )
                     else
-                        write_in_file("data_structures.json", get_data_structure_details(result, new_doc))
+                        result =  get_data_structure_details(result, new_doc)
+                        if result
+                            ds_results.append(result)
+                        end
+                        write_in_file("data_structures.json", result)
                     end
                 else
                     crawler_results.delete_if {|x| x == result}
                 end 
+            end 
+            if algorithms_flag
+                return algo_results
+            else
+                return ds_results
             end 
         end
     end
@@ -79,7 +96,7 @@ module WebCrawler
         time_complexity_occurances.each do |element|
             time_complexity.append(element.text)
         end
-        {'URL'=> url, 'Title' => title, 'Time_Complexity' => time_complexity.join(' ')} if time_complexity.length > 0
+        {'url'=> url, 'title' => title, 'time_complexity' => time_complexity.join(' ')} if time_complexity.length > 0
     end 
 
     def get_data_structure_details(url,doc) 
@@ -88,7 +105,7 @@ module WebCrawler
         page_content = doc.css('div.article--viewer_content')
         content = page_content.css('p').map{|para| para.text}.compact
 
-        {'URL'=> url, 'Title' => title, 'Content' => content.join(' ')} if content.length > 0
+        {'url'=> url, 'title' => title, 'content' => content.join(' ')} if content.length > 0
          
     end 
         

@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_02_144655) do
+ActiveRecord::Schema.define(version: 2022_05_02_181512) do
+
+  create_table "algorithms", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "url", null: false
+    t.text "time_complexity", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
@@ -19,6 +27,14 @@ ActiveRecord::Schema.define(version: 2022_05_02_144655) do
     t.integer "user_id"
     t.integer "post_id"
     t.index ["body"], name: "index_comments_on_body", unique: true
+  end
+
+  create_table "datastructures", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "url", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favourite_posts", force: :cascade do |t|
