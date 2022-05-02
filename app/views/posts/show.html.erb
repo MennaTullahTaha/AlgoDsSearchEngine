@@ -11,7 +11,7 @@
                     <a href="#"><h3><%=@post.title%></h3></a>
                     <ul class="post-meta list-inline">
                         <li class="list-inline-item">
-                            <i class="fa fa-user-circle-o"></i> <a href="#">John Doe</a>
+                            <i class="fa fa-user-circle-o"></i> <a href="#">by <%= link_to @post.user.username, user_path(@post.user) if @post.user %></a>
                         </li>
                         <li class="list-inline-item">
                             <i class="fa fa-calendar-o"></i> <a href="#"><%=@post.updated_at%></a>
@@ -23,8 +23,10 @@
                     <p>
                         <%=@post.body%>
                     </p><br>
-                    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
-                    <%= link_to 'Delete', post_path(@post), class: "btn btn-outline-secondary btn-sm", method: :delete,data: { confirm: "Are you sure?" } %>
+                    <%if logged_in? && @post.user == current_user%>
+                        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
+                        <%= link_to 'Delete', post_path(@post), class: "btn btn-outline-secondary btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+                    <%end%>
                 </div>
             </div>
         </div>
