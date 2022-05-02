@@ -22,8 +22,11 @@
                             </li>
                         </ul>
                         <p>
-                            <%=post.body%>
+                            <%=truncate(post.body, length: 100)%>
                         </p><br>
+                        <%= link_to 'Show', post_path(post), class: "btn btn-outline-secondary btn-sm"%>
+                        <%= link_to 'Edit', edit_post_path(post), class: "btn btn-outline-secondary btn-sm"%>
+                        <%= link_to 'Delete', post_path(post), class: "btn btn-outline-secondary btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
                     </div>
                 </div>
             </div>
