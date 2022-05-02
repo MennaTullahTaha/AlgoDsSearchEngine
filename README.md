@@ -15,17 +15,11 @@ The finished website should contain the following:
 
 1. As a user I can create/update/delete an account.
 2. As a user I can sign in.
-3. As a user I can favourite algorithms page.
-4. As a User I can favourite DataStructure page.
-5. As a user I can search for algorithms based on their time and memory complexities. 
-6. As a user I can create a post regarding an Algorithm. 
-7. As a User I can comment on a post regarding an Algorithm.
-8. As a user I can search for a DataStructure based on its name or description. 
-9. As a user I can create/update/delete a post regarding a DataStructure. 
-10. As a User I can create/update comment on a post related to DataStructure.
-11. As a User I can favourite a post. 
-12. As a User I can view posts. 
-13. As a User I can view comments. 
+3. As a user I can create a post
+4. As a User I can comment on a post 
+5. As a user I can search for a DataStructure based on its name or description. 
+6. As a User I can view posts. 
+7. As a User I can view comments. 
 
 
 
@@ -45,7 +39,7 @@ The finished website should contain the following:
 
 # To Trigger the Crawler 
 
-To be added 
+Uncomment the method call from the engines controller index then run the server, this will result in creating json files with results of crawler
 
 ### Executing program
 
