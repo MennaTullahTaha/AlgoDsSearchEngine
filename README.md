@@ -41,7 +41,7 @@ The finished website should contain the following:
 
 # To Trigger the Crawler 
 
-Uncomment the method call from the engines controller index then run the server, this will result in creating json files with results of crawler
+It gets triggered on the first time of running the server
 
 ### Executing program
 
@@ -53,7 +53,7 @@ code blocks for commands
 3. Run bundle install command from terminal 
 4. start the server using rails s command
 
-* The Website Link for heroku: To Be Added 
+* The Website Link for heroku: https://algo-ds-search-engine.herokuapp.com/
 ```
 
 ## Help
