@@ -23,14 +23,24 @@
                     <p>
                         <%=@post.body%>
                     </p><br>
-                    <%if logged_in? && @post.user == current_user%>
-                        <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
-                        <%= link_to 'Delete', post_path(@post), class: "btn btn-outline-secondary btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+                    <%if logged_in? &&%>
+                        <%= link_to 'Comment', new_comment_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm"%>
+                        <%if @post.user == current_user%>
+                            <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
+                            <%= link_to 'Delete', post_path(@post), class: "btn btn-outline-secondary btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>
+                        <%end%>
                     <%end%>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="flickr_pagination">
+  <%= will_paginate @comments, :container => false %>
+</div>
+<%=render 'comment' %>
+<div class="flickr_pagination">
+  <%= will_paginate @comments, :container => false %>
 </div>
 
 

@@ -58,6 +58,18 @@ Timeline
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
 }
 
+.comment-content {
+    margin-left: 350px;
+    border: 1px solid #e6e6e6;
+    padding: 35px 20px;
+    border-radius: 3px;
+    text-align: left;
+    overflow-wrap: break-word;
+    background: #fff;  
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.3);
+}
+
 .vtimeline-content h3 {
     font-size: 1.5em;
     font-weight: 600;
