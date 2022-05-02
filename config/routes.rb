@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
 
   resources :comments, except: [:index, :show]
+
+  get 'add_post_to_favourite/:post_id', to: 'users#favourite_post', as: 'add_post_to_favourite'
+  get 'display_favourite_posts', to: 'users#display_favourite_posts'
+  delete 'remove_post_from_favourites', to: 'users#remove_post_from_favourites'
+
 end

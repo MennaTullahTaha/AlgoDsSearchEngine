@@ -14,5 +14,9 @@ class ApplicationController < ActionController::Base
           flash[:alert] = "You must be logged in to perform that action"
           redirect_to login_path
         end
-      end
+    end
+    helper_method :is_post_favourite?
+    def is_post_favourite?(id)
+      current_user.saved_posts.find_by(id: id)
+    end
 end

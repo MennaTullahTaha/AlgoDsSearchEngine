@@ -25,6 +25,11 @@
                     </p><br>
                     <%if logged_in? &&%>
                         <%= link_to 'Comment', new_comment_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm"%>
+                        <%if !is_post_favourite?(@post.id)%>
+                            <%= link_to 'Favourite', add_post_to_favourite_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm"%>
+                        <%else%>
+                            <%= link_to 'UnFavourite', remove_post_from_favourites_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm", method: :delete%>
+                        <%end%>
                         <%if @post.user == current_user%>
                             <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-secondary btn-sm"%>
                             <%= link_to 'Delete', post_path(@post), class: "btn btn-outline-secondary btn-sm", method: :delete, data: { confirm: "Are you sure?" } %>

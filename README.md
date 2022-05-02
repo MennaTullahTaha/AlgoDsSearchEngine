@@ -20,6 +20,8 @@ The finished website should contain the following:
 5. As a user I can search for a DataStructure based on its name or description. 
 6. As a User I can view posts. 
 7. As a User I can view comments. 
+8. As a User I can favourite/unfavourite posts.
+9. As a User I can view my own favourite posts. 
 
 
 
