@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   get 'display_favourite_posts', to: 'users#display_favourite_posts'
   delete 'remove_post_from_favourites', to: 'users#remove_post_from_favourites'
 
+  post 'search', to: 'engines#search'
+
+  get 'search', to: 'engines#index'
+
 end

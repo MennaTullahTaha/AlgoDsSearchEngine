@@ -17,4 +17,16 @@ class EnginesController < ApplicationController
             end       
         end
     end
+
+    def search
+        choice = params[:engine][:choice]
+        search_value = params[:engine][:search_value]
+        flash.now[:notice] = "Here are the results for your search"
+        if choice == "Algorithm"
+            @results = Algorithm.search(search_value).paginate(page: params[:page], per_page: 5)
+        else
+            @results = Datastructure.search(search_value).paginate(page: params[:page], per_page: 5)
+        end
+        @results
+    end
 end 
