@@ -72,4 +72,3 @@ It gets triggered on the first time of running the server
    * Allow users to upload their pictures
 * 0.1
     * Initial Release
-
