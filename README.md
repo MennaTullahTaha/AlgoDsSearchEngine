@@ -21,7 +21,9 @@ The finished website should contain the following:
 6. As a User I can view posts. 
 7. As a User I can view comments. 
 8. As a User I can favourite/unfavourite posts.
-9. As a User I can view my own favourite posts. 
+9. As a User I can view my own favourite posts.
+10. As a User I can search for an Algorithm/Data Structure and see the results based on that.
+11. As a User I can create a post regarding an Algorithm or DataStructure from the search results or an independant post. 
 
 
 
@@ -33,6 +35,7 @@ The finished website should contain the following:
 1. A code editor (ruby mine or VScode).
 2. Ruby installed on the machine version version 2.7.0
 3. Rails version 5.2.7.1
+4. postgresql installed locally
 
 ### Installing
 
@@ -47,22 +50,14 @@ It gets triggered on the first time of running the server
 
 * How to run the program
 * Step-by-step bullets
-1. For Mac or ubuntu, using terminal navigate to the project folder and use "To be added"
-code blocks for commands
+1. ensure that postgres is installed locally 
 2. Clone the repository
-3. Run bundle install command from terminal 
-4. start the server using rails s command
+3. Change the username in the development environment in the database.yml file under config then run rails db:migrate
+4. Run bundle install command from terminal 
+5. start the server using rails s command
 
 * The Website Link for heroku: https://algo-ds-search-engine.herokuapp.com/
 ```
-
-## Help
-
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
-
 
 ## Version History
 
@@ -77,4 +72,3 @@ command to run if program contains helper info
    * Allow users to upload their pictures
 * 0.1
     * Initial Release
-
