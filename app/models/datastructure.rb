@@ -3,7 +3,7 @@ class Datastructure < ApplicationRecord
     validates :title, presence: true
     validates :content, presence: true
     validates :url, presence: true
-    
+    has_many :posts
     pg_search_scope :search,
                   against: { title: 'B', content: 'A' },
                   using: { tsearch: { dictionary: 'english', tsvector_column: 'searchable'} }

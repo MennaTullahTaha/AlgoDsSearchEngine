@@ -7,6 +7,11 @@
   <div class="row justify-content-center">
       <div class="col-10">
         <%= form_with(model: @post, class: "shadow p-3 mb-3 bg-info rounded", local: true) do |f| %>
+          <%if params[:algorithm_result_id]%>
+            <%= hidden_field_tag 'algorithm_result_id', params[:algorithm_result_id] %>
+          <%elsif params[:datastructure_result_id]%>
+            <%= hidden_field_tag 'datastructure_result_id', params[:datastructure_result_id] %>
+          <%end%>
           <div class="form-group row">
             <%= f.label :title, class: "col-2 col-form-label text-light" %>
             <div class="col-10">
@@ -19,6 +24,7 @@
               <%= f.text_area :body, rows: 10, class: "form-control shadow rounded", placeholder: "Content of Post" %>
             </div>
           </div>
+          
           <div class="form-group row justify-content-center">
             <%= f.submit class: "btn btn-outline-light btn-lg" %>
           </div>

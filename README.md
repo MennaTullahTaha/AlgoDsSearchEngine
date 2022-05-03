@@ -22,7 +22,8 @@ The finished website should contain the following:
 7. As a User I can view comments. 
 8. As a User I can favourite/unfavourite posts.
 9. As a User I can view my own favourite posts.
-10. As a User I can search for an Algorithm/Data Structure and see the results based on that. 
+10. As a User I can search for an Algorithm/Data Structure and see the results based on that.
+11. As a User I can create a post regarding an Algorithm or DataStructure from the search results or an independant post. 
 
 
 

@@ -9,7 +9,14 @@
                 </div>
                 <div class="vtimeline-block">
                     <span class="vtimeline-date"><%=post.created_at%></span><div class="vtimeline-content">
-                        <a href="#"><h3><%=post.title%></h3></a>
+                        <a href="#"><h3><%=post.title%></h3></a><br/>
+                        <%if post.algorithm%>
+                            <i class="fa fa-user-circle-o"></i> <a href="#">Related Topic URL: <%= post.algorithm.url %></a><br/>
+                            <i class="fa fa-user-circle-o"></i> <a href="#">Related Topic Title: <%= post.algorithm.title %></a><br/>
+                        <%elsif post.datastructure%>
+                            <i class="fa fa-user-circle-o"></i> <a href="#">Related Topic URL: <%= post.datastructure.url %></a><br/>
+                            <i class="fa fa-user-circle-o"></i> <a href="#">Related Topic Title: <%= post.datastructure.title %></a><br/>
+                        <%end%>
                         <ul class="post-meta list-inline">
                             <li class="list-inline-item">
                                 <i class="fa fa-user-circle-o"></i> <a href="#">by <%= link_to post.user.username, user_path(post.user) if post.user %></a>

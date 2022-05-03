@@ -168,7 +168,9 @@ CREATE TABLE public.posts (
     body text NOT NULL,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
-    user_id integer
+    user_id integer,
+    algorithm_id integer,
+    datastructure_id integer
 );
 
 
@@ -408,6 +410,7 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220502194957'),
 ('20220502195502'),
 ('20220502195753'),
-('20220502195804');
+('20220502195804'),
+('20220503051346');
 
 

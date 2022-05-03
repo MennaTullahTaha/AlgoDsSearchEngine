@@ -2,6 +2,7 @@ class PostsController < ApplicationController
     before_action :set_post, only: [:show, :edit, :update, :destroy]
     before_action :require_user, except: [:show, :index]
     before_action :require_same_user, only: [:edit, :update, :destroy]
+
     def show
         @comments = @post.comments.paginate(page: params[:page], per_page: 5)
     end 
@@ -16,6 +17,11 @@ class PostsController < ApplicationController
     
     def create
         @post = Post.new(post_params)
+        if params[:algorithm_result_id] 
+            @post.algorithm = Algorithm.find_by(id: params[:algorithm_result_id])
+        elsif params[:datastructure_result_id]
+            @post.datastructure = Datastructure.find_by(id: params[:datastructure_result_id])
+        end 
         @post.user = current_user
         if @post.save
             redirect_to @post
@@ -49,6 +55,7 @@ class PostsController < ApplicationController
     end
 
     private
+
 
     def set_post
         @post = Post.find(params[:id])
