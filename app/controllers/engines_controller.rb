@@ -6,10 +6,11 @@ require 'uri'
 
 class EnginesController < ApplicationController
   include WebCrawler
-  def home; end
+  def home
+    populate_db
+  end
 
   def search
-    populate_db
     choice = params[:engine][:choice]
     search_value = params[:engine][:search_value]
     flash.now[:notice] = 'Here are the results for your search'
