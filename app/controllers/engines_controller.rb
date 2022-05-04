@@ -9,7 +9,6 @@ class EnginesController < ApplicationController
   def home; end
 
   def search
-    session[:user_id] = nil
     populate_db
     choice = params[:engine][:choice]
     search_value = params[:engine][:search_value]
