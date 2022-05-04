@@ -39,11 +39,11 @@
                                 <%else%>
                                     <%= link_to 'UnFavourite', remove_datastructure_from_favourites_path(datastructure_id: result.id), class: "btn btn-outline-secondary btn-sm", method: :delete%>
                                 <%end%>
-                                <%if result.is_a?(Algorithm)%>
+                            <%end%>
+                            <%if result.is_a?(Algorithm)%>
                                     <%= link_to 'Create post about this result', new_post_path(algorithm_result_id: result.id), class: "btn btn-outline-secondary btn-sm"%>
-                                <%else%>
+                            <%else%>
                                     <%= link_to 'Create post about this result', new_post_path(datastructure_result_id: result.id), class: "btn btn-outline-secondary btn-sm"%>
-                                <%end%>
                             <%end%>
                         <%end%>
                     </div>

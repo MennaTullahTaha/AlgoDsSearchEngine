@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   delete 'remove_datastructure_from_favourites', to: 'users#remove_datastructure_from_favourites'
 
   post 'search', to: 'engines#search'
+  get 'search', to: 'engines#home'
 
   get 'display_results', to: 'engines#display_results', as: 'display_results'
 end

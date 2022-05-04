@@ -12,11 +12,20 @@ class EnginesController < ApplicationController
     populate_db
     choice = params[:engine][:choice]
     search_value = params[:engine][:search_value]
-    flash.now[:notice] = 'Here are the results for your search'
-    @results = if choice == 'Algorithm'
-                 Algorithm.search(search_value)
+    respond_to do |format|
+      #-> @search will be available in the other view
+      format.html do
+        redirect_to display_results_path(choice: choice, search_value: search_value)
+      end
+    end
+  end
+
+  def display_results
+    flash[:notice] = 'Here are the results for your search'
+    @results = if params[:choice] == 'Algorithm'
+                 Algorithm.search(params[:search_value]).paginate(page: params[:page], per_page: 5)
                else
-                 Datastructure.search(search_value)
+                 Datastructure.search(params[:search_value]).paginate(page: params[:page], per_page: 5)
                end
     @results
   end
