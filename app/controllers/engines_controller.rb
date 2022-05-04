@@ -28,11 +28,11 @@ class EnginesController < ApplicationController
       algos, ds = trigger_crawler
       algos.each do |attrs|
         algo = Algorithm.new(attrs)
-        algo.save unless Algorithm.find_by(url: attrs.url)
+        algo.save unless Algorithm.find_by(url: attrs[:url])
       end
       ds.each do |attrs|
         data_structure = Datastructure.new(attrs)
-        data_structure.save unless Datastructure.find_by(url: attrs.url)
+        data_structure.save unless Datastructure.find_by(url: attrs[:url])
       end
     end
   end
