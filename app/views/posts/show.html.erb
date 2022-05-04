@@ -27,10 +27,10 @@
                     <p>
                         <%=@post.body%>
                     </p><br>
-                    <%if logged_in? &&%>
+                    <%if logged_in?%>
                         <%= link_to 'Comment', new_comment_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm"%>
                         <%if !is_post_favourite?(@post.id)%>
-                            <%= link_to 'Favourite', add_post_to_favourite_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm"%>
+                            <%= link_to 'Favourite', add_post_to_favourite_path(post_id: @post.id), method: :post,class: "btn btn-outline-secondary btn-sm"%>
                         <%else%>
                             <%= link_to 'UnFavourite', remove_post_from_favourites_path(post_id: @post.id), class: "btn btn-outline-secondary btn-sm", method: :delete%>
                         <%end%>

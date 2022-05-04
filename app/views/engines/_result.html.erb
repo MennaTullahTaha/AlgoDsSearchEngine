@@ -1,0 +1,54 @@
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<%= stylesheet_link_tag "posts.css" %>
+<div class="container mb80">
+    <%@results.each do |result|%>
+        <div class="page-timeline">
+            <div class="vtimeline-point">
+                <div class="vtimeline-icon">
+                    <i class="fa fa-image"></i>
+                </div>
+                <div class="vtimeline-block">
+                    <span class="vtimeline-date"><%=result.created_at%></span><div class="vtimeline-content">
+                        <a href="#"><h3><%=result.title%></h3></a>
+                        <ul class="post-meta list-inline">
+                            <li class="list-inline-item">
+                                <i class="fa fa-user-circle-o"></i> <a href="#">URL: <%= link_to result.url, result.url%></a>
+                            </li>
+                            <li class="list-inline-item">
+                                <i class="fa fa-calendar-o"></i> <a href="#"><%=result.updated_at%></a>
+                            </li>
+                        </ul>
+                        <p>
+                            <%if result.is_a?(Algorithm)%>
+                                <%=truncate(result.time_complexity, length: 100)%>
+                            <%else%>
+                                <%=truncate(result.content, length: 100)%>
+                            <%end%>
+                        </p><br>
+                        <%if logged_in?%>
+                            <%if result.is_a?(Algorithm)%>
+                                <%if !is_algorithm_favourite?(result.id)%>
+                                    <%= link_to 'Favourite', add_algorithm_to_favourite_path(algorithm_id: result.id), method: :post, class: "btn btn-outline-secondary btn-sm"%>
+                                <%else%>
+                                    <%= link_to 'UnFavourite', remove_algorithm_from_favourites_path(algorithm_id: result.id), class: "btn btn-outline-secondary btn-sm", method: :delete%>
+                                <%end%>
+                            <%else%>
+                                <%if !is_datastructure_favourite?(result.id)%>
+                                    <%= link_to 'Favourite', add_datastructure_to_favourite_path(datastructure_id: result.id), method: :post, class: "btn btn-outline-secondary btn-sm"%>
+                                <%else%>
+                                    <%= link_to 'UnFavourite', remove_datastructure_from_favourites_path(datastructure_id: result.id), class: "btn btn-outline-secondary btn-sm", method: :delete%>
+                                <%end%>
+                                <%if result.is_a?(Algorithm)%>
+                                    <%= link_to 'Create post about this result', new_post_path(algorithm_result_id: result.id), class: "btn btn-outline-secondary btn-sm"%>
+                                <%else%>
+                                    <%= link_to 'Create post about this result', new_post_path(datastructure_result_id: result.id), class: "btn btn-outline-secondary btn-sm"%>
+                                <%end%>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <%end%>
+</div>

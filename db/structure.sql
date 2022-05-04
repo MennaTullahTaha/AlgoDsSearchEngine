@@ -127,6 +127,70 @@ ALTER SEQUENCE public.datastructures_id_seq OWNED BY public.datastructures.id;
 
 
 --
+-- Name: favourite_algorithms; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.favourite_algorithms (
+    id bigint NOT NULL,
+    user_id integer,
+    algorithm_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: favourite_algorithms_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.favourite_algorithms_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: favourite_algorithms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.favourite_algorithms_id_seq OWNED BY public.favourite_algorithms.id;
+
+
+--
+-- Name: favourite_datastructures; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.favourite_datastructures (
+    id bigint NOT NULL,
+    user_id integer,
+    datastructure_id integer,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+--
+-- Name: favourite_datastructures_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.favourite_datastructures_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: favourite_datastructures_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE public.favourite_datastructures_id_seq OWNED BY public.favourite_datastructures.id;
+
+
+--
 -- Name: favourite_posts; Type: TABLE; Schema: public; Owner: -
 --
 
@@ -258,6 +322,20 @@ ALTER TABLE ONLY public.datastructures ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
+-- Name: favourite_algorithms id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.favourite_algorithms ALTER COLUMN id SET DEFAULT nextval('public.favourite_algorithms_id_seq'::regclass);
+
+
+--
+-- Name: favourite_datastructures id; Type: DEFAULT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.favourite_datastructures ALTER COLUMN id SET DEFAULT nextval('public.favourite_datastructures_id_seq'::regclass);
+
+
+--
 -- Name: favourite_posts id; Type: DEFAULT; Schema: public; Owner: -
 --
 
@@ -308,6 +386,22 @@ ALTER TABLE ONLY public.comments
 
 ALTER TABLE ONLY public.datastructures
     ADD CONSTRAINT datastructures_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: favourite_algorithms favourite_algorithms_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.favourite_algorithms
+    ADD CONSTRAINT favourite_algorithms_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: favourite_datastructures favourite_datastructures_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.favourite_datastructures
+    ADD CONSTRAINT favourite_datastructures_pkey PRIMARY KEY (id);
 
 
 --
@@ -411,6 +505,8 @@ INSERT INTO "schema_migrations" (version) VALUES
 ('20220502195502'),
 ('20220502195753'),
 ('20220502195804'),
-('20220503051346');
+('20220503051346'),
+('20220503120130'),
+('20220503120214');
 
 
