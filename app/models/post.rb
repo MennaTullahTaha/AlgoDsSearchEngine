@@ -7,6 +7,6 @@ class Post < ApplicationRecord
   belongs_to :algorithm, optional: true
   belongs_to :datastructure, optional: true
   has_many :comments, dependent: :destroy
-  has_many :favourite_posts
+  has_many :favourite_posts, dependent: :destroy
   has_many :favourites, through: :favourite_posts, source: :user
 end

@@ -14,10 +14,10 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :favourite_posts
+  has_many :favourite_posts, dependent: :destroy
   has_many :saved_posts, through: :favourite_posts, source: :post
-  has_many :favourite_datastructures
+  has_many :favourite_datastructures, dependent: :destroy
   has_many :saved_datastructures, through: :favourite_datastructures, source: :datastructure
-  has_many :favourite_algorithms
+  has_many :favourite_algorithms, dependent: :destroy
   has_many :saved_algorithms, through: :favourite_algorithms, source: :algorithm
 end
